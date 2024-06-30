@@ -23,27 +23,36 @@ scores =[0 for _ in range(players)]
 
 while max(scores)<max_score:
     for player_index in range(players):
-        print("/nPlayer number "+ (player_index+1) + "turn has started!")
-        print("Your total score is:",scores[player_index],"/n")
-        current_score=0
 
-        while True:
+        print("\nPlayer number ",(player_index+1),"turn has started!")
+        print("Your total score is:",scores[player_index],"\n")
+
+        current_score=0        
+
+        while (current_score+scores[player_index])<max_score:
+            
             should_roll=input("Would you like to roll (y) ?")
-            if should_roll.lower() !='y':
+            if should_roll.lower() != 'y':
+                break
+            
+            value=roll()
+
+            if value==1:
+                print("You rolled 1. Turn done!")
                 break
             else:
-                value=roll()
-                if value==1:
-                    print("You rolled 1. Turn done!")
-                    break
-                else:
-                    current_score+=value
-                    print("You rolled a : ",value)
-            print("Your total score for this trial = ",current_score)
+                current_score=current_score+value
+                print("You rolled a : ",value)
+                print("Your total score = ",scores[player_index]+current_score)
+        scores[player_index]=scores[player_index]+current_score
+                
+    if max(scores)>50:
+        break
+        
     
 max_score=max(scores)
 winning_index=scores.index(max_score)
-print("Player number", winning_idx + 1,"is the winner with a score of:", max_score)
+print("Player number", winning_index + 1,"is the winner with a score of:", max_score)
 
 
 
