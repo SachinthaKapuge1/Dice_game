@@ -5,4 +5,3 @@ def roll():
     min_number=1    
     return random.randint(1,6)
 
-print(roll())
