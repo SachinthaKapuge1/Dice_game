@@ -17,4 +17,13 @@ while True:
     else:
         print("You are enterd a invalid input! Enter a valid input.")
 
-print(players)
+max_score=50
+scores =[0 for _ in range(players)]
+
+for player_index in range(players):
+    print("/nPlayer number "+ (player_index+1) + "turn has started!")
+    print("Your total score is:",scores[player_index],"/n")
+    current_score=0
+
+    
+
